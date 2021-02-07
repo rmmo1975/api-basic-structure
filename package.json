@@ -7,9 +7,11 @@
     "dev": "dotenv -e .env -- ts-node-dev --respawn src/server.ts"
   },
   "dependencies": {
+    "@types/mongoose": "^5.10.3",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.11.15"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.0",

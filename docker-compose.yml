@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  api-basic-structure:
+    image: mongo:latest
+    restart: unless-stopped
+    environment:
+      - MONGO_INITDB_DATABASE=api-basic-structure
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=Q7b9UC#=^nyrLs;E
+    ports:
+      - 27019:27017
+    volumes: 
+      - ./db-data:/var/lib/mongodb/api-basic-structure
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo 10.10.10.60:27017/api-basic-structure --quiet
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    
