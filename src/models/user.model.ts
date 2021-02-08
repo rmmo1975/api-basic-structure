@@ -1,7 +1,7 @@
 import { IsString } from 'class-validator';
 import { model, Schema, Document } from 'mongoose';
 
-interface User {
+interface UserInterface {
   _id: string;
   firstName: string;
   lastName: string;
@@ -19,7 +19,7 @@ const userSchema = new Schema({
   password: String
 })
 
-const userModel = model<User & Document>('User', userSchema);
+const userModel = model<UserInterface & Document>('User', userSchema);
 
 class UserDto {
   @IsString()
@@ -36,4 +36,4 @@ class UserDto {
 }
 
 
-export { User, userModel, UserDto }
+export { UserInterface, userModel, UserDto }
