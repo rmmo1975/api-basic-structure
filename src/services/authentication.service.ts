@@ -27,10 +27,10 @@ class Authentication {
       user,
     };
   }
-  private createCookie(tokenData: TokenData) {
+  public createCookie(tokenData: TokenData) {
     return `Authorization=${tokenData.token}; HttpOnly; Max-Age=${tokenData.expiresIn}`;
   }
-  private createToken(user: UserInterface): TokenData {
+  public createToken(user: UserInterface): TokenData {
     const expiresIn = 60 * 60 * 24;
     const secret = process.env.JWT_SECRET;
     const dataStoredInToken: DataStoredInToken = {

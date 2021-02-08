@@ -35,5 +35,14 @@ class UserDto {
   public password: string;
 }
 
+class LogInDto {
+  @IsString()
+  public email: string;
 
-export { UserInterface, userModel, UserDto }
+  @IsString()
+  public password: string;
+}
+
+export default LogInDto;
+
+export { UserInterface, userModel, UserDto, LogInDto }
