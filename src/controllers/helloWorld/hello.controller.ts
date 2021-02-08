@@ -1,5 +1,5 @@
 import { Request, Response, Router } from 'express';
-import controllerInterface from '../../interfaces/controller';
+import controllerInterface from '../../interfaces/controller.interface';
 
 class HelloController implements controllerInterface {
   public path = '/hello';

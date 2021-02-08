@@ -1,7 +1,9 @@
 import express, { Application } from 'express';
 import bodyparser from 'body-parser'
-import controllerInterface from './interfaces/controller';
 import { connect } from 'mongoose';
+
+import controllerInterface from './interfaces/controller.interface';
+import errorMiddleware from './middlewares/error.middleware';
 
 class App {
   private app: Application;
@@ -12,6 +14,7 @@ class App {
     this.connectToTheDatabase();
     this.initialiseMiddlewares();
     this.initialiseControllers(controllers);
+    this.initialiseErrorHandling();
   }
 
   public listen() {
@@ -35,7 +38,7 @@ class App {
   }
 
   private initialiseErrorHandling() {
-    throw new Error('not implemented');
+    this.app.use(errorMiddleware);
   }
 
   private async connectToTheDatabase() {

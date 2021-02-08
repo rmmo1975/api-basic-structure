@@ -1,5 +1,5 @@
 # api-basic-structure
-Another example of API using express, mongodb and typescript where I used many of the interesting structures I've been found.
+Another example of API using express, mongodb and typescript where I used many of the interesting structures I've been found. You can find more in https://github.com/mwanago.
 
 ## Set up the development environment
   1. Install dependencies `yarn install`
@@ -14,3 +14,4 @@ Another example of API using express, mongodb and typescript where I used many o
 | MONGO_PASSWORD                      | mongodb password                                  |
 | MONGO_PATH                          | mongodb connection string                         |
 | MONGO_DB                            | database name                                     |
+| JWT_SECRET                          | json web token secret                             |
