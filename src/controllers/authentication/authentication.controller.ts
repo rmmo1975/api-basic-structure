@@ -54,7 +54,7 @@ class AuthenticationController implements controllerInterface {
 
   private loggingOut: RequestHandler = (req, res, next) => {
     res.setHeader('Set-Cookie', ['Authorization=;Max-age=0']);
-    res.send(200);
+    res.sendStatus(200);
   }
 }
 
