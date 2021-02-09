@@ -4,6 +4,7 @@ import { connect } from 'mongoose';
 
 import controllerInterface from './interfaces/controller.interface';
 import errorMiddleware from './middlewares/error.middleware';
+import { setNodeMailer } from 'services/email.service';
 
 class App {
   private app: Application;
@@ -12,6 +13,7 @@ class App {
   constructor(controllers: controllerInterface[]) {
     this.app = express();
     this.connectToTheDatabase();
+    this.startNodeMailer();
     this.initialiseMiddlewares();
     this.initialiseControllers(controllers);
     this.initialiseErrorHandling();
@@ -59,6 +61,26 @@ class App {
         dbName: MONGO_DB
       }
     );
+  }
+
+  private startNodeMailer () {
+    const {
+      NODEMAILER_TRANSPORT_HOST,
+      NODEMAILER_TRANSPORT_PORT,
+      NODEMAILER_TRANSPORT_SECURE,
+      NODEMAILER_TRANSPORT_AUTH_USER,
+      NODEMAILER_TRANSPORT_AUTH_PASSWORD 
+    } = process.env;
+
+    setNodeMailer({
+      host: NODEMAILER_TRANSPORT_HOST!,
+      port: +NODEMAILER_TRANSPORT_PORT!,
+      secure: NODEMAILER_TRANSPORT_SECURE === 'true' ? true : false,
+      auth: {
+        user: NODEMAILER_TRANSPORT_AUTH_USER!,
+        password: NODEMAILER_TRANSPORT_AUTH_PASSWORD!
+      }
+    })
   }
 }
 
