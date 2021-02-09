@@ -27,9 +27,11 @@ class Authentication {
       user,
     };
   }
+
   public createCookie(tokenData: TokenData) {
     return `Authorization=${tokenData.token}; HttpOnly; Max-Age=${tokenData.expiresIn}`;
   }
+
   public createToken(user: UserInterface): TokenData {
     const expiresIn = 60 * 60 * 24;
     const secret = process.env.JWT_SECRET;
@@ -40,6 +42,10 @@ class Authentication {
       expiresIn,
       token: sign(dataStoredInToken, secret!, { expiresIn }),
     };
+  }
+
+  private sendConfirmationMessage = (userName: string, userEmail: string) => {
+    throw new Error('not implemented.')
   }
 }
 

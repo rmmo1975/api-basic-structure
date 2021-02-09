@@ -1,5 +1,5 @@
 import express, { Application } from 'express';
-import bodyparser from 'body-parser'
+import { json } from 'body-parser'
 import { connect } from 'mongoose';
 
 import controllerInterface from './interfaces/controller.interface';
@@ -28,7 +28,7 @@ class App {
   }
 
   private initialiseMiddlewares() {
-    this.app.use(bodyparser.json());
+    this.app.use(json());
   }
 
   private initialiseControllers(controllers: controllerInterface[]) {

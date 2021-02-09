@@ -56,6 +56,13 @@ class AuthenticationController implements controllerInterface {
     res.setHeader('Set-Cookie', ['Authorization=;Max-age=0']);
     res.sendStatus(200);
   }
+
+  private confirmUserRegistration: RequestHandler = (req, res, next) => {
+    throw new Error('not implemented.')
+  }
+
+
+
 }
 
 export default AuthenticationController;
